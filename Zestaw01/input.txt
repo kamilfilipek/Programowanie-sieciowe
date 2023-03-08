@@ -1,0 +1,8 @@
+Since it is of critical importance that 
+autonomous systems, whether software or hardware, 
+that interact with human beings (and perhaps other sentient beings as well) 
+behave in an ethical manner, we consider six possible approaches to effecting this.
+We argue that the first five approaches are unsatisfactory and defend the last approach, 
+the approach we have taken. It involves discovering 
+ethically relevant features and 
+corresponding prima facie duties present in the various possible actionssfs
