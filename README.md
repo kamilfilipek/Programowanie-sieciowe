@@ -8,7 +8,7 @@
      - Wczytywanie należy przerwać gdy użytkownik wpisze zero albo gdy skończy się miejsce w tablicy (tzn. po wczytaniu 50 liczb).
 
      - Z main należy następnie wywoływać pomocniczą funkcję drukuj, przekazując jej jako argumenty adres tablicy oraz liczbę wczytanych do niej liczb.   
-     - Funkcję tę zadeklaruj jako void drukuj(int tablica[], int liczba_elementow). W jej ciele ma być pętla for drukująca te elementy tablicy, które są większe od 10 i mniejsze od 100.
+     - Funkcję tę zadeklaruj jako ```void drukuj(int tablica[], int liczba_elementow)```. W jej ciele ma być pętla for drukująca te elementy tablicy, które są większe od 10 i mniejsze od 100. ```c void(int val)```
 
 2. Przypomnij sobie wiadomości o wskaźnikach i arytmetyce wskaźnikowej w C. Napisz alternatywną wersję funkcji drukującej liczby, o sygnaturze void drukuj_alt(int * tablica, int liczba_elementow). 
      - Nie używaj w niej indeksowania zmienną całkowitoliczbową (nie może się więc pojawić ani tablica[i], ani *(tablica+i)), zamiast tego użyj wskaźnika przesuwanego z elementu na element przy pomocy ++.
