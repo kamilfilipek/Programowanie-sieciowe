@@ -6,13 +6,15 @@
 
 1. Napisz program w C deklarujący w funkcji main tablicę int liczby[50] i wczytujący do niej z klawiatury kolejne liczby. Wczytywanie należy przerwać gdy użytkownik wpisze zero albo gdy skończy się miejsce w tablicy (tzn. po wczytaniu 50 liczb).
 
- Z main należy następnie wywoływać pomocniczą funkcję drukuj, przekazując jej jako argumenty adres tablicy oraz liczbę wczytanych do niej liczb. Funkcję tę zadeklaruj jako void drukuj(int tablica[], int liczba_elementow). W jej ciele ma być pętla for drukująca te elementy tablicy, które są większe od 10 i mniejsze od 100.
+      Z main należy następnie wywoływać pomocniczą funkcję drukuj, przekazując jej jako argumenty adres tablicy oraz liczbę wczytanych do niej liczb. Funkcję tę zadeklaruj jako void drukuj(int tablica[], int liczba_elementow). W jej ciele ma być pętla for drukująca te elementy tablicy, które są większe od 10 i mniejsze od 100.
 
 2. Przypomnij sobie wiadomości o wskaźnikach i arytmetyce wskaźnikowej w C. Napisz alternatywną wersję funkcji drukującej liczby, o sygnaturze void drukuj_alt(int * tablica, int liczba_elementow). Nie używaj w niej indeksowania zmienną całkowitoliczbową (nie może się więc pojawić ani tablica[i], ani *(tablica+i)), zamiast tego użyj wskaźnika przesuwanego z elementu na element przy pomocy ++.
 
 3. Opracuj funkcję sprawdzającą, czy przekazany jej bufor zawiera tylko i wyłącznie drukowalne znaki ASCII, tzn. bajty o wartościach z przedziału domkniętego [32, 126]. Funkcja ma mieć następującą sygnaturę: bool printable_buf(const void * buf, int len).
 
-  Pamiętaj o włączeniu nagłówka <stdbool.h>, bez niego kompilator nie rozpozna ani nazwy typu bool, ani nazw stałych true i false.
+ Pamiętaj o włączeniu nagłówka <stdbool.h>, bez niego kompilator nie rozpozna ani nazwy typu bool, ani nazw stałych true i false.
+
+  dd
 
 Trzeba będzie użyć rzutowania wskaźników, bo typ void * oznacza „adres w pamięci, ale bez informacji o tym co w tym fragmencie pamięci się znajduje”. Na początku ciała funkcji trzeba go zrzutować do typu „adres fragmentu pamięci zawierającego ciąg bajtów”.
 
