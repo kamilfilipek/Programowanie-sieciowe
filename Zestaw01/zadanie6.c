@@ -26,12 +26,12 @@ int main(int argc, char *argv[])
     if(inputFileDescriptor == -1)
     {
         perror("Blad otworzenia pliku inputFile.");
-        exit(-1);
+        exit(1);
     }
     if(outputFileDescriptor == -1)
     {
         perror("Blad otworzenia pliku outputFile");
-        exit(-1);
+        exit(1);
     }
 
   
@@ -39,24 +39,24 @@ int main(int argc, char *argv[])
     size_t nbytes = sizeof(buffer);
     ssize_t bytes_read;
  
-    // czytanie pliku
-    bytes_read = read(inputFileDescriptor, buffer, nbytes); 
+    // czytanie i pisanie do pliku, w pętli bo chcemy tez duze plikic czytać - małymi porcjami
+    while((bytes_read = read(inputFileDescriptor, buffer, nbytes)) > 0)
+    {
+        nbytes = strlen(buffer);
+        ssize_t bytes_written = write(outputFileDescriptor, buffer, nbytes);
+        if(bytes_written == -1)
+        {
+            perror("Blad pisania do pliku outputFile.");
+            exit(1);
+        }
+    }
     if(bytes_read == -1)
     {
         perror("Blad czytania pliku inputFile.");
-        exit(-1);
+         exit(1);
     }
 
-    // pisanie do pliku
-    nbytes = strlen(buffer);
-    ssize_t bytes_written = write(outputFileDescriptor, buffer, nbytes);
-    if(bytes_written == -1)
-    {
-        perror("Blad pisania do pliku outputFile.");
-        exit(-1);
-    }
-
-
+   
     // potencjalne błędy zamykania plikow
     if(close(inputFileDescriptor) == -1)
     {
