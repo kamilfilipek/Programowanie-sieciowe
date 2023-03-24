@@ -12,6 +12,11 @@
 
 int main(int argc, char *argv[])
 {
+    if (argc != 2)
+    {
+        perror("Niepoprawna liczba argumentow, poprawne uzycie to: ./zadanie5 numerPortu");
+        exit(1);
+    }
 
     int port = atoi(argv[1]);
     int listening_socket;   // gniazdko nasłuchujące
@@ -24,10 +29,11 @@ int main(int argc, char *argv[])
         perror("socket");
         return 1;
     }
+
     printf("port = %d \n", port);
     struct sockaddr_in addr = {
         .sin_family = AF_INET,
-        .sin_addr = { .s_addr = htonl(INADDR_ANY) },
+        .sin_addr = { .s_addr = inet_addr("127.0.0.1") },
         .sin_port = htons(port)
     };
 
@@ -53,10 +59,11 @@ int main(int argc, char *argv[])
             return 1;
         }
   
-        unsigned char buf[16];
-        memcpy(buf, "Hello\r\n", 7);
+        unsigned char buf[32];
+        char * message = "Witam \rtu serwer\r\n";
+        memcpy(buf, message, strlen(message));
 
-        cnt = write(client_socket, buf, 7);
+        cnt = write(client_socket, buf, strlen(message));
         if (cnt == -1) {
             perror("write");
             return 1;
